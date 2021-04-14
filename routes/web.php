@@ -17,20 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 //homepage
 Route::get('/', function () {
-    return redirect()-> route('admin-dashboard');
-  //  return view('welcome');
+    return redirect()-> route('dashboard');
 });
 
 // dashboard
-
 Route::prefix('dashboard')
-    -> middleware(['auth:sanctum','admin'])
-    -> group(function(){
-        Route::get('/',[DashboardController::class,'index'])-> name('admin-dashboard'); 
+    ->middleware(['auth:sanctum','admin'])
+    ->group(function() {
+        Route::get('/',[DashboardController::class, 'index'])->name('dashboard');
     });
-
-
-
 
 //midtrans related
 Route::get('midtrans/success', [MidtransController::class,'success']);
